@@ -1,5 +1,5 @@
 import './App.css';
-import color from './components/Color'
+import Color from './components/Color'
 import Login from  './components/Login/Login';
 //import Body from './components/Body';
 import Nav from './components/Navigation/Nav';
@@ -9,7 +9,6 @@ import SubComplain from './components/Subcomplaint/SubComplain';
 //import Logcontext from './components/logcontext';
 import { useContext, useState } from 'react';
 import { Link, Route, Routes, useLocation, } from 'react-router-dom';
-import Color from './components/Color'
 
 import OverView from './components/Overview/OverView';
 import { Logincontext } from './components/Login/logcontext';
@@ -23,7 +22,7 @@ import Contact from './components/contactDetails/Contact';
 
 function Header(props){
   const hStyle={
-      color:Color.white,
+      color: Color.foreground,
       textAlign:"center",
       margin:"0",
   }
@@ -45,57 +44,70 @@ const location = useLocation();
           margin:"50px",
           fontSize:"150%",
           textDecoration:"none",
-          color:Color.secondary,
+          color: Color.mutedForeground,
       }
       const buttonStyle={
-          background:Color.secondary,
-          color:Color.primary,
-          width:"5%",
-          marginTop:".5%",
-          height:"50px",
-          flex:"0 1 auto",
-          borderRadius:"25px",
-          borderWidth:"0",
-          cursor:"pointer",
-          fontSize:"100%",
-          marginLeft: "auto",
-      }
+          background: "#e1e6e7ed",
+          color: Color.foreground,
+           width:"10%",
+           marginTop:".5%",
+           height:"50px",
+           flex:"0 1 auto",
+           borderRadius:"25px",
+           borderWidth:"0",
+           cursor:"pointer",
+           fontSize:"100%",
+           marginLeft: "auto",
+       }
 
   return login ? (
     <>
-      {/* ... (Login screen is unchanged) ... */}
-      <div id="toggle">
-        <label
-          className={`user${role === "user" ? "" : " closed"}`}
-          style={{ backgroundColor: color.primary, color: color.secondary }}
-          onClick={() => setRole("user")}
-        >
-          User
-        </label>
-        <label
-          className={`admin${role === "user" ? " closed" : ""}`}
-          style={{ backgroundColor: color.primary, color: color.secondary }}
-          onClick={() => setRole("Admin")}
-        >
-          Admin
-        </label>
-      </div>
+      {/* Login area with visible border */}
+      <div
+        id="login-container"
+        style={{
+          border: `1px solid ${Color.border}`,
+          borderRadius: '10px',
+          padding: '20px',
+          maxWidth: '480px',
+          margin: '32px auto',
+          background: Color.surface,
+          boxShadow: `0 2px 8px ${Color.muted}20`
+        }}
+      >
+        <div id="toggle" style={{ display: 'flex', gap: '12px', justifyContent: 'center', marginBottom: '12px' }}>
+          <label
+            className={`user${role === "user" ? "" : " closed"}`}
+            style={{ backgroundColor: Color.emerald500, color: Color.foreground, padding: '8px 16px', borderRadius: '6px', cursor: 'pointer' }}
+            onClick={() => setRole("user")}
+          >
+            User
+          </label>
+          <label
+            className={`admin${role === "user" ? " closed" : ""}`}
+            style={{ backgroundColor: Color.emerald500, color: Color.foreground, padding: '8px 16px', borderRadius: '6px', cursor: 'pointer' }}
+            onClick={() => setRole("Admin")}
+          >
+            Admin
+          </label>
+        </div>
 
-      <Login
-        key={role === "user" ? "user" : "admin"}
-        userdata={setUserId}
-        loginset={setLogin}
-        text={role === "user" ? "User ID" : "Admin ID"}
-        role={role}
-      />
+        <Login
+          key={role === "user" ? "user" : "admin"}
+          userdata={setUserId}
+          loginset={setLogin}
+          text={role === "user" ? "User ID" : "Admin ID"}
+          role={role}
+        />
+      </div>
     </>
   ) : (
-    <div>
+    <div style={{ background: Color.background, minHeight: '100vh', color: Color.foreground }}>
       <Header title={title} />
       <nav
         id="topbar"
         style={{
-          background: color.primary,
+          background: Color.gradientPrimary,
           maxWidth: "100vw",
         }}
       >
@@ -105,9 +117,9 @@ const location = useLocation();
             className={`hamburger ${navOpen ? "navi" : ""}`}
             onClick={() => setNavOpen(!navOpen)}
           >
-            <div className="line" style={{ background: color.secondary }}></div>
-            <div className="line" style={{ background: color.secondary }}></div>
-            <div className="line" style={{ background: color.secondary }}></div>
+            <div className="line" style={{ background: Color.foreground }}></div>
+            <div className="line" style={{ background: Color.foreground }}></div>
+            <div className="line" style={{ background: Color.foreground }}></div>
           </div>
         )}
 

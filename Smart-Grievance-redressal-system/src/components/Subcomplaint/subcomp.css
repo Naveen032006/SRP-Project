@@ -16,6 +16,9 @@
     text-align: left;
     padding :20px;
     border-radius: 20px;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 6px 18px rgba(8,35,63,0.04);
+    background-clip: padding-box;
 }
 #title,#location,#message,#category{
     border-radius: 20px;
@@ -23,13 +26,25 @@
 }
 #reccomp{
      padding :5px;
-     border-radius: 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 6px 18px rgba(8,35,63,0.04);
+    max-height: 82vh;
+    overflow-y: auto;
 }
 #image{
     display: grid;
     grid-template-rows:1fr 1fr ;
     padding :20px;
     border-radius: 20px;
+}
+
+/* Photo upload panel styling */
+#imageupl{
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 20px;
+    padding: 12px;
+    box-shadow: 0 4px 12px rgba(8,35,63,0.03);
 }
 #img{
     height: 10%;
