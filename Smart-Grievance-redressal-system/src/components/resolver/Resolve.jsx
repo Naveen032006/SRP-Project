@@ -38,6 +38,7 @@ import {
   Close as CloseIcon,
   Edit as EditIcon,
 } from "@mui/icons-material";
+import { SubissueBox } from "../Subcomplaint/subissuebox";
 
 // -----------------------
 // ComplaintList Component
@@ -55,81 +56,29 @@ function ComplaintList({ complaints, selectedId, onComplaintSelect }) {
       <Box sx={{ p: 2, borderBottom: "1px solid #ddd" }}>
         <Typography variant="h6">Complaints Queue</Typography>
       </Box>
-      <List disablePadding>
+      <Box sx={{ p: 2 }}>
         {(complaints || []).map((complaint) => (
-          <ListItemButton
+          <Box
             key={complaint._id}
-            selected={selectedId === complaint._id}
-            onClick={() => onComplaintSelect(complaint)}
-            sx={{
-              borderBottom: "1px solid #eee",
-              flexDirection: "column",
-              alignItems: "flex-start",
-              py: 1.5,
-            }}
+            onClick={() => onComplaintSelect && onComplaintSelect(complaint)}
+            sx={{ cursor: "pointer", mb: 1.5 }}
           >
-            <Box
-              sx={{
-                width: "100%",
-                display: "flex",
-                justifyContent: "space-between",
-                mb: 1,
-              }}
-            >
-              <Typography variant="body2" color="text.secondary">
-                {complaint.createdAt
+            <SubissueBox
+              label={complaint.issueTitle || "Untitled"}
+              discription={complaint.description || ""}
+              catogory={complaint.category || "General"}
+              status={complaint.status || "Pending"}
+              priority={complaint.priority || "Medium"}
+              date={
+                complaint.createdAt
                   ? new Date(complaint.createdAt).toLocaleDateString()
-                  : "N/A"}
-              </Typography>
-              <Chip
-                label={complaint.category || "General"}
-                color="primary"
-                variant="outlined"
-                size="small"
-              />
-            </Box>
-            <ListItemText
-              primary={complaint.issueTitle || "Untitled"}
-              primaryTypographyProps={{ fontWeight: "600", mb: 0.5 }}
-              secondary={
-                <Typography variant="body2" color="text.secondary">
-                  {complaint.location || "Unknown"}
-                </Typography>
+                  : "N/A"
               }
+              location={complaint.location || "Unknown"}
             />
-            <Box
-              sx={{
-                width: "100%",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                mt: 1,
-              }}
-            >
-              <Chip
-                label={complaint.status || "Pending"}
-                variant="outlined"
-                size="small"
-                color={
-                  complaint.status === "Pending"
-                    ? "warning"
-                    : complaint.status === "Resolved"
-                    ? "success"
-                    : "info"
-                }
-              />
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <ThumbUpIcon
-                  sx={{ fontSize: 14, color: "text.secondary", mr: 0.5 }}
-                />
-                <Typography variant="body2" color="text.secondary">
-                  {complaint.likeCount || 0} community support
-                </Typography>
-              </Box>
-            </Box>
-          </ListItemButton>
+          </Box>
         ))}
-      </List>
+      </Box>
     </Paper>
   );
 }
@@ -340,6 +289,7 @@ function ComplaintDetail({ complaint, onUpdate }) {
         <CardContent>
           <Box sx={{ display: "flex", gap: 1, mb: 1.5 }}>
             <Chip label={complaint.category || "General"} color="error" size="small" />
+            
           </Box>
           <Typography variant="h5" component="h2" gutterBottom>
             {complaint.issueTitle}

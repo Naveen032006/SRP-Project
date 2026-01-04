@@ -55,9 +55,10 @@ function AdminHome({
     const items = [
       { id: "overview", label: "Overview", icon: "home" },
       { id: "resolve", label: "Resolve Complaints", icon: "file" },
-      { id: "mycomplain", label: "My Complaints", icon: "list" },
-      { id: "analytics", label: "Analytics", icon: "chart" },
+      { id: "allcomplain", label: "All Complaints", icon: "list" },
       { id: "staff", label: "Staff", icon: "users" },
+      { id: "analytics", label: "Analytics", icon: "chart" },
+      
     ];
 
     const Icon = ({ name, active }) => {
@@ -189,7 +190,7 @@ function AdminHome({
               marginBottom: 10,
             }}
           >
-            UrbanEye
+            Smart City
           </div>
         </div>
 
@@ -274,23 +275,24 @@ function AdminHome({
         )}
 
         {/* MY COMPLAINTS */}
-        {section === "mycomplain" && (
+        {section === "allcomplain" && (
           <div className="content2">
             <Mycomplain role={role} issues={issues} />
           </div>
         )}
 
-        {/* ANALYTICS */}
-        {section === "analytics" && (
-          <div className="content3">
-            <Analytics issues={issues} />
-          </div>
-        )}
+        
 
         {/* STAFF MANAGEMENT */}
         {section === "staff" && (
           <div className="content3">
             <Staff />
+          </div>
+        )}
+        {/* ANALYTICS */}
+        {section === "analytics" && (
+          <div className="content3">
+            <Analytics issues={issues} />
           </div>
         )}
       </div>

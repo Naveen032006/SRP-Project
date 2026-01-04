@@ -6,15 +6,21 @@ import { LikeButton } from "./likebotton";
 
 
 export function SubissueBox({label, discription, catogory, status,priority,date,location }) {
-    const getcolor=(status)=>{
-        switch(status?.toLowerCase()){
-            case "pending": return "warning";
-            case "in progress": return "info";
-            case "resolved": return "success";
-            case "rejected": return "error";
-            default: return "default";
+    const getcolor = (status) => {
+        const normalized = (status || "").toLowerCase().replace(/[-\s]/g, "");
+        switch (normalized) {
+            case "pending":
+                return "warning";
+            case "inprogress":
+                return "info";
+            case "resolved":
+                return "success";
+            case "rejected":
+                return "error";
+            default:
+                return "default";
         }
-    }
+    };
 
     const  getPcolor=(priority)=>{
         switch(priority?.toLowerCase()){
@@ -48,7 +54,7 @@ export function SubissueBox({label, discription, catogory, status,priority,date,
                 <Stack direction="row" spacing={0.5} alignItems="center" sx={{padding:"1px"}} >
                         <Chip label={status} color={getcolor(status)} variant="filled"  sx={{ textDecoration: "none" }}/>
                         <CalendarTodayOutlinedIcon color="disabled" fontSize="small" />
-                        <Typography variant="captioin">{date}</Typography>
+                        <Typography variant="caption">{date}</Typography>
                     </Stack>
                 <Stack sx={{ padding: "2px" }}>
                     <Typography variant="caption" >{discription}</Typography>

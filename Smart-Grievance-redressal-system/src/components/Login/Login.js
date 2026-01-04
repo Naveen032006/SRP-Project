@@ -86,7 +86,7 @@ function Login({ userdata, loginset, text, role }) {
         style={{
           ...baseInputStyle,
           border: `1px solid ${focused === "userid" ? Color.emerald500 : Color.border}`,
-          boxShadow: focused === "userid" ? `0 0 0 6px ${Color.focusRing}` : "none"
+          boxShadow: focused === "userid" ? `0 0 0 6px ${Color.focusRing}` : "none",marginLeft:"0px"
         }}
       />
 
@@ -102,7 +102,7 @@ function Login({ userdata, loginset, text, role }) {
         style={{
           ...baseInputStyle,
           border: `1px solid ${focused === "password" ? Color.emerald500 : Color.border}`,
-          boxShadow: focused === "password" ? `0 0 0 6px ${Color.focusRing}` : "none"
+          boxShadow: focused === "password" ? `0 0 0 6px ${Color.focusRing}` : "none",marginLeft:"0px"
         }}
       />
 

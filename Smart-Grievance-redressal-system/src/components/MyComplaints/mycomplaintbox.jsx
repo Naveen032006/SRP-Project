@@ -91,7 +91,7 @@
                     <Box sx={{ display: "flex", justifyContent: "space-between", padding: "5px" }} >
                         <Chip label={status} color={getcolor(status)} variant="filled" sx={{ textDecoration: "none" }} />
                         <Stack direction="row" spacing={0.5} alignItems="center" >
-                            {!user&& (<Button variant="outlined" size="medium"  color="secondary" sx={{ borderRadius: 3, textTransform: "none" }} onClick={()=>{setupdatepop(true)}}>Update Status</Button>)}
+                            
                             <Button variant="outlined" size="medium" sx={{ borderRadius: 3, textTransform: "none" }} startIcon={<RemoveRedEyeOutlinedIcon />} color="info" onClick={() => setpop(true)}>Veiw details</Button>
                             <Button variant="outlined" size="medium" sx={{ borderRadius: 3, textTransform: "none" }} startIcon={<CancelOutlinedIcon />} color="error" >cancel</Button>
                         </Stack>

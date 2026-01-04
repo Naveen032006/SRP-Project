@@ -33,7 +33,7 @@ export function Subissue(){
     label: "Broken Watertank on Main Street",
     description: "The Wathertankn has been broken for over a week, making people suffer a lot.",
     category: "Basic Needs",
-    status: "Pending",
+    status: "In-Progress",
     priority: "low",
     date: "20/12/2024",
     location: "123 Main Street, Downtown",
