@@ -5,7 +5,9 @@ let route=express.Router()
 const jwt=require('jsonwebtoken')
 const Autorisation=(req,res,next)=>{
     const token=req.headers.authorization
-    
+    if (!token) {
+      return res.status(401).json({ message: "No token" });
+    }
     jwt.verify(token,"grienvence",(err,user)=>{
         if(err) {
             return res.send("authrosation failed")
@@ -32,5 +34,9 @@ route.post("/delete",async (req,res)=>{
     const {label}=req.body
     await complaint.Deletedata({label})
     res.send("deleted successfully")
+})
+route.get("/allcomplaints",async(req,res)=>{
+    const complaints=await Issuemodel.find()
+    res.json(complaints)
 })
 module.exports=route

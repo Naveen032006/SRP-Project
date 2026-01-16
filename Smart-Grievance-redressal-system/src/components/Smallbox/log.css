@@ -37,12 +37,12 @@ h2
     border-radius: 20px;
     margin-left: 45%;
 }
-#userid,#password,#password1,#password2{
+#userid,#password1,#password2,#email,#phone{
     margin-left:15%;
     height: 30px;
-    size: 50px;
+    size: 40px;
     border-radius: 20px;
-    padding-left:20px;
+    padding-left:15px;
     font-size: medium;
     border-width: 0;
 }

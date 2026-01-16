@@ -7,6 +7,7 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 router.post('/create',async (req,res)=>{
+  
   await userShema.create({...req.body})
   return res.send("user created successfully")
 })
@@ -16,7 +17,11 @@ router.post('/login',async (req,res)=>{
     if(!username) res.send("invalid credential")
     if(password===username.  password){
       const token=jwt.sign({user,role:"user"},"grienvence",{expiresIn:'1h'})
-      return res.send(token)
+     return res.status(201).json({
+    success: true,
+    message: "User created successfully"
+  });
+
 
     } 
     return res.send("invalid credential")

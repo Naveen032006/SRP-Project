@@ -90,7 +90,7 @@ function Login({ userdata, loginset, text, role }) {
         }}
       />
 
-      <h2 style={{ margin: 0 }}>Password:</h2>
+      <h2 style={{ margin: 0,color:"black" }}>Password:</h2>
       <input
         type="password"
         id="password"

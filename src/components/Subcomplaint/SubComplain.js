@@ -4,7 +4,6 @@ import './subcomp.css'
 import { Subissue } from './subissues';
 import { useState } from "react";
 import axios from "axios";
-import { Button } from '@mui/material';
 
 const locationData = {
   Villupuram: {
@@ -50,22 +49,18 @@ const handleSubmit = async (e) => {
       district: formData.district,
       taluk: formData.taluk,
       ward: formData.ward
-    },
-    user:{
-        userid:"naveen123"
     }
   };
 
-  const res=await fetch("http://localhost:3000/complaint/createusingorm",{method:"POST",body:JSON.stringify(payload),
-    
+  await axios.post(
+    "http://localhost:3000/complaint/createusingorm",
+    payload,
+    {
       headers: {
-        "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibmF2ZWVuIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3Njc4MDI1MDQsImV4cCI6MTc2NzgwNjEwNH0.EKiHqzryKJ49shTHwpZxfUzYIi-1bc3GIFj8SFNEpjw",
-        "content-Type":"application/json"
+        Authorization: `Bearer ${localStorage.getItem("token")}`
       }
     }
   );
-  const responsedata=await res.text()
-  console.log(responsedata)
 
   alert("Complaint submitted successfully");
 };
@@ -178,21 +173,25 @@ const handleSubmit = async (e) => {
       <div id="imageupl" style={{ backgroundColor: Color.primary, borderRadius: "20px", border: "2px solid black" }}>
         <h3 style={{Color:"black"}}>Photo Upload</h3>
         <input type="file" accept="image/*" />
-         <div id="instructions" style={{ backgroundColor: Color.primary, border: "2px solid black", padding: "15px", borderRadius: "10px", marginTop: "15px" }}>
-        <h3 style={{Color:"black"}}>Instructions</h3>
-        <ul style={{Color:"black"}}>
-          <li><strong>Upload Image:</strong> Click the 'Choose File' button above to select and upload a photo related to your issue. Ensure the image is below 2mb, clear and relevant.</li>
-          <li><strong>Issue Submission:</strong> After filling in all the required details and uploading your image, click the 'Submit Complaint' button to submit your grievance.</li>
-          <li> <strong>Authenticity:</strong>Complainns should be true and relevant.False complaints lead to deactivation of accout</li>
-        </ul>
-      </div>
       </div>
 
-      {/* Instructions */}
-     
+      {/* Instructions for image & issue (added) */}
+      <div id="uploadInstructions" style={{ backgroundColor: Color.primary, borderRadius: "12px", border: "1px solid black", padding: "12px", marginTop: "10px" }}>
+        <h4 style={{ margin: "0 0 6px 0" }}>How to upload</h4>
+        <p style={{ margin: 0 }}>• Attach a clear photo showing the issue (JPEG/PNG).<br/>
+           • Max file size: 5MB.<br/>
+           • In the description, include exact location details, time, and any relevant landmarks.</p>
+      </div>
 
     </div>
-    <Button type="submit" variant='contained' color="success" sx={{borderRadius:"20px",padding:"10px",marginLeft:"90%", borderWidth:0,textTransform:"none"}}>Submit Complaint</Button> 
+
+    <button
+      id="submitComplaint"
+      type="submit"
+      style={{ backgroundColor: Color.primary, color: Color.secondary }}
+    >
+      Submit Complaint
+    </button>
 
   </form>
 );

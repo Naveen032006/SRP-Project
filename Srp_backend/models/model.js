@@ -28,8 +28,18 @@ const issueSchema=new schema({
         default:new Date
      },
      location:{
-        type:String,
-        required:true,
+        district:{
+            type:String,
+            required:true
+        },
+        taluk:{
+            type:String,
+            required:true
+        },
+        ward:{
+            type:String,
+            required:true
+        }
     },
      likeCount:{
         type:Number,
