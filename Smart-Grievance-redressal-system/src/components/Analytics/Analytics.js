@@ -1,7 +1,7 @@
 import { Header } from '../Basic/heading';
 import { Alayticswrap } from './analyticswrap';
 
-const Analytics=()=>{
+export const Analytics=()=>{
     const aStyle={maxHeight:"550px",overflowY:"scroll"}
     return(
         <div style={aStyle}>
@@ -10,4 +10,3 @@ const Analytics=()=>{
         </div>
     )
 }
-export default Analytics;
