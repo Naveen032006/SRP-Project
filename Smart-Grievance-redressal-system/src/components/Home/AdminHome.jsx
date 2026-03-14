@@ -6,6 +6,7 @@ import Mycomplain from "../MyComplaints/Mycomplain";
 import Resolve from "../resolver/Resolve";
 import { useIssue } from "../../context/Issuecontext";
 import { useUI } from "../../context/Navcontext";
+import { Analytics } from "../Analytics/Analytics";
 
 function AdminHome() {
   const { navOpen, setNavOpen, section, setSection } = useUI(); // ✅ context only
@@ -110,7 +111,7 @@ function AdminHome() {
         {section === "resolve" && <div className="content1"><Resolve issues={issues} /></div>}
         {section === "allcomplain" && <div className="content2"><Mycomplain /></div>}
         {section === "staff" && <div className="content3"><Staff /></div>}
-        {section === "analytics" && <div className="content3">{/* Analytics */}</div>}
+        {section === "analytics" && <div className="content3"><Analytics/></div>}
       </div>
     </div>
   );
